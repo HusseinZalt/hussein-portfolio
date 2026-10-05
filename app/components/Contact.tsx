@@ -10,7 +10,10 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-[#07080c]">
+    <section id="contact" className="py-20 bg-[#07080c] relative overflow-hidden">
+      {/* Decorative Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-violet-950/10 blur-3xl rounded-full -z-10"></div>
+      
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -18,8 +21,8 @@ export default function Contact() {
             <p className="text-slate-400 mb-8">أنا مستعد لتحويل رؤيتك إلى واقع بصري مبهر. تواصل معي عبر النموذج أو عبر وسائل التواصل الاجتماعي.</p>
             
             <div className="flex flex-col gap-4">
-              <a href="mailto:husseinzalt45@gmail.com" className="flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors">
-                <Mail className="w-5 h-5" /> husseinzalt45@gmail.com
+              <a href="mailto:husseinzalt67@gmail.com" className="flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors">
+                <Mail className="w-5 h-5" /> husseinzalt67@gmail.com
               </a>
               <a href="https://www.linkedin.com/in/hussein-zalt-5a625b2b4/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors">
                 <LinkedinIcon className="w-5 h-5" /> LinkedIn/hussein-zalt
@@ -30,16 +33,16 @@ export default function Contact() {
             </div>
           </div>
 
-          <form className="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-4">
-            <input type="text" placeholder="اسمك" className="w-full p-4 rounded-xl bg-[#07080c] border border-slate-700 text-white outline-none focus:border-violet-500" />
-            <input type="email" placeholder="بريدك الإلكتروني" className="w-full p-4 rounded-xl bg-[#07080c] border border-slate-700 text-white outline-none focus:border-violet-500" />
-            <select className="w-full p-4 rounded-xl bg-[#07080c] border border-slate-700 text-slate-400 outline-none focus:border-violet-500">
+          <form className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 space-y-4">
+            <input type="text" placeholder="اسمك" className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500" />
+            <input type="email" placeholder="بريدك الإلكتروني" className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500" />
+            <select className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-slate-300 outline-none focus:border-violet-500">
                 <option>نوع المشروع</option>
                 <option>موشن جرافيكس</option>
                 <option>مونتاج فيديو</option>
                 <option>آخر</option>
             </select>
-            <textarea placeholder="رسالتك" rows={4} className="w-full p-4 rounded-xl bg-[#07080c] border border-slate-700 text-white outline-none focus:border-violet-500"></textarea>
+            <textarea placeholder="رسالتك" rows={4} className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500"></textarea>
             <button className="w-full flex items-center justify-center gap-2 bg-violet-600 py-4 rounded-xl text-white font-bold hover:bg-violet-700 transition-all">
               <Send className="w-4 h-4" /> إرسال الرسالة
             </button>

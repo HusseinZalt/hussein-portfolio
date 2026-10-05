@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { VideoModal } from "./VideoModal";
 
@@ -22,43 +23,50 @@ const projects: Project[] = [
 export default function Portfolio() {
   const [filter, setFilter] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   const filteredProjects = filter === "All" ? projects : projects.filter(p => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-20 bg-[#07080c]">
+    <section id="portfolio" className="py-20 bg-[#07080c] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent -z-10"></div>
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-white mb-8 text-right">معرض الأعمال</h2>
-        
         <div className="flex justify-end gap-2 mb-8">
           {["All", "Motion Graphics", "Video Editing", "VFX"].map((cat) => (
-            <button 
+            <motion.button 
               key={cat}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${filter === cat ? "bg-violet-600 text-white" : "bg-slate-900 text-slate-400 hover:bg-slate-800"}`}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${filter === cat ? "bg-violet-600 text-white" : "bg-white/5 text-slate-400 hover:bg-white/10 border border-white/5"}`}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
-            <div key={project.id} onClick={() => setSelectedProject(project)} className="cursor-pointer group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 h-64">
+            <motion.div 
+              layout
+              key={project.id} 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              onClick={() => setSelectedProject(project)} 
+              className="cursor-pointer group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 h-64 hover:border-violet-500/50 transition-all hover:scale-[1.02]"
+            >
               <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07080c] to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
               <div className="absolute bottom-4 right-4 z-10">
                 <h3 className="text-white font-bold">{project.title}</h3>
                 <p className="text-violet-400 text-xs">{project.category}</p>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-sm">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
                 <div className="w-12 h-12 rounded-full bg-violet-600 flex items-center justify-center hover:scale-110 transition-transform">
                   <Play className="w-5 h-5 fill-white text-white ml-1" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
       {selectedProject && <VideoModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </section>
