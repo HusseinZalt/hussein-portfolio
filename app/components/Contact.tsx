@@ -36,11 +36,11 @@ export default function Contact() {
           <form className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 space-y-4">
             <input type="text" placeholder="اسمك" className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500" />
             <input type="email" placeholder="بريدك الإلكتروني" className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500" />
-            <select className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-slate-300 outline-none focus:border-violet-500">
-                <option>نوع المشروع</option>
-                <option>موشن جرافيكس</option>
-                <option>مونتاج فيديو</option>
-                <option>آخر</option>
+            <select defaultValue="" className="w-full p-4 rounded-xl bg-black/40 border border-white/10 text-white outline-none focus:border-violet-500 cursor-pointer [&>option]:bg-[#12131a] [&>option]:text-white">
+              <option value="" disabled className="text-slate-500 bg-[#12131a]">نوع المشروع</option>
+              <option value="motion" className="bg-[#12131a] text-white">موشن جرافيكس</option>
+              <option value="editing" className="bg-[#12131a] text-white">مونتاج فيديو</option>
+              <option value="other" className="bg-[#12131a] text-white">آخر</option>
             </select>
             <textarea placeholder="رسالتك" rows={4} className="w-full p-4 rounded-xl bg-black/20 border border-white/10 text-white outline-none focus:border-violet-500"></textarea>
             <button className="w-full flex items-center justify-center gap-2 bg-violet-600 py-4 rounded-xl text-white font-bold hover:bg-violet-700 transition-all">
