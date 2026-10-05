@@ -15,14 +15,14 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, title: "إعلان تجاري", category: "Motion Graphics", description: "عمل موشن جرافيك إبداعي لعلامة تجارية.", role: "Motion Designer", thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600", videoUrl: "#" },
-  { id: 2, title: "فيلم وثائقي", category: "Video Editing", description: "مونتاج سينمائي لفيلم وثائقي قصير.", role: "Lead Editor", thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600", videoUrl: "#" },
-  { id: 3, title: "مشروع VFX", category: "VFX", description: "دمج وتأثيرات بصرية متقدمة.", role: "VFX Artist", thumbnail: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600", videoUrl: "#" },
+  { id: 1, title: "إعلان تجاري", category: "Motion Graphics", description: "عمل موشن جرافيك إبداعي لعلامة تجارية.", role: "Motion Designer", thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { id: 2, title: "فيلم وثائقي", category: "Video Editing", description: "مونتاج سينمائي لفيلم وثائقي قصير.", role: "Lead Editor", thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { id: 3, title: "مشروع VFX", category: "VFX", description: "دمج وتأثيرات بصرية متقدمة.", role: "VFX Artist", thumbnail: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
 ];
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<string>("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const filteredProjects = filter === "All" ? projects : projects.filter(p => p.category === filter);
 
   return (
@@ -50,7 +50,7 @@ export default function Portfolio() {
               key={project.id} 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              onClick={() => setSelectedProject(project)} 
+              onClick={() => setSelectedVideo(project.videoUrl)} 
               className="cursor-pointer group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 h-64 hover:border-violet-500/50 transition-all hover:scale-[1.02]"
             >
               <img src={project.thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -68,7 +68,7 @@ export default function Portfolio() {
           ))}
         </motion.div>
       </div>
-      {selectedProject && <VideoModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
+      <VideoModal isOpen={!!selectedVideo} onClose={() => setSelectedVideo(null)} videoUrl={selectedVideo || ""} />
     </section>
   );
 }
