@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { metadata as siteMetadata } from "./metadata";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -13,11 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "حسين | صناعة الفيديو والموشن جرافيكس - Hussein Portfolio",
-  description: "معرض أعمال حسين - صانع محتوى، محرر فيديو، ومصمم موشن جرافيكس محترف. مونتاج سينمائي، تعديل ألوان، وتأثيرات بصرية VFX.",
-  keywords: ["Hussein", "Video Editor", "Motion Graphics", "After Effects", "Premiere Pro", "Color Grading", "VFX", "موشن جرافيكس", "محرر فيديو", "مونتاج"],
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,

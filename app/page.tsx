@@ -5,6 +5,7 @@ import Portfolio from "./components/Portfolio";
 import BeforeAfterSlider from "./components/BeforeAfterSlider";
 import Stack from "./components/Stack";
 import Contact from "./components/Contact";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 export default function Home() {
   const handleShowreel = () => console.log("Open Showreel");
@@ -21,6 +22,7 @@ export default function Home() {
       <BeforeAfterSlider />
       <Stack />
       <Contact />
+      <FloatingWhatsApp />
     </main>
   );
 }
